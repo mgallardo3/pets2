@@ -38,5 +38,14 @@ $f3->route('GET /', function()
 
 });
 
+$f3->route('POST /order', function()
+{
+    print_r['animal'];
+    echo"<h1>my Pets</h1><br><p><a href='order'>Order a pet</a></p>";
+//    //Display a view
+//    $view = new Template();
+//    echo $view->render('views/home.html');
+
+});
 //Run fat free
 $f3->run();
