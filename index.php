@@ -38,5 +38,37 @@ $f3->route('GET /', function()
 
 });
 
+//Define a Lunch route with a parameter
+$f3->route('GET /@animal', function($f3,$params)
+{
+    $animal = $params['animal'];
+    switch($animal)
+    {
+        case 'chicken':
+            echo "Cluck!";
+            break;
+
+        case 'dog':
+            echo "Wuff!";
+            break;
+
+        case 'Cat':
+            echo "Meow!";
+            break;
+
+        case 'pig':
+            echo "Oink!";
+            break;
+
+        case 'wolf':
+            echo "Ouuuuu!";
+            break;
+
+        default:
+            $f3->error(404);
+
+    }
+});
+
 //Run fat free
 $f3->run();
