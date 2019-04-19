@@ -38,14 +38,53 @@ $f3->route('GET /', function()
 
 });
 
-$f3->route('POST /order', function()
+$f3->route('GET /order', function()
+{
+    //Display a view
+    $view = new Template();
+    echo $view->render('views/form1.html');
+
+});
+
+$f3->route('POST /order2', function()
 {
     print_r['animal'];
-    echo"<h1>my Pets</h1><br><p><a href='order'>Order a pet</a></p>";
+//    echo"<h1>my Pets</h1><br><p><a href='order'>Order a pet</a></p>";
 //    //Display a view
 //    $view = new Template();
 //    echo $view->render('views/home.html');
 
+});
+//Define a Lunch route with a parameter
+$f3->route('GET /@animal', function($f3,$params)
+{
+    $animal = $params['animal'];
+    switch($animal)
+    {
+        case 'chicken':
+            echo "Cluck!";
+            break;
+
+        case 'dog':
+            echo "Wuff!";
+            break;
+
+        case 'Cat':
+            echo "Meow!";
+            break;
+
+        case 'pig':
+            echo "Oink!";
+            break;
+
+        case 'wolf':
+            echo "Ouuuuu!";
+            break;
+
+        default:
+            $f3->error(404);
+
+    }
 });
 //Run fat free
 $f3->run();
