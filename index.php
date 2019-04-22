@@ -48,12 +48,12 @@ $f3->route('GET /order', function()
 
 $f3->route('POST /order2', function()
 {
-    print_r($_POST['animal']);
+//    $_SESSION['animal'] = $_POST['animal'];
 //    echo"<h1>my Pets</h1><br><p><a href='order'>Order a pet</a></p>";
-    print_r['animal'];
+//    print_r['animal'];
 //    //Display a view
     $view = new Template();
-    echo $view->render('views/home.html');
+    echo $view->render('views/form2.html');
 
 });
 //Define a Lunch route with a parameter
