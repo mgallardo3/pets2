@@ -48,12 +48,9 @@ $f3->route('GET /order', function()
 
 $f3->route('POST /order2', function()
 {
-<<<<<<< HEAD
     print_r($_POST['animal']);
 //    echo"<h1>my Pets</h1><br><p><a href='order'>Order a pet</a></p>";
-=======
     print_r['animal'];
->>>>>>> cf2d6665099d05fbebdecbc0f15e8eeaaf842fc3
 //    //Display a view
     $view = new Template();
     echo $view->render('views/home.html');
