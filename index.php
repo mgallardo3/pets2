@@ -48,7 +48,7 @@ $f3->route('GET /order', function()
 
 $f3->route('POST /order2', function()
 {
-//    $_SESSION['animal'] = $_POST['animal'];
+    $_SESSION['animal'] = $_POST['animal'];
 //    echo"<h1>my Pets</h1><br><p><a href='order'>Order a pet</a></p>";
 //    print_r['animal'];
 //    //Display a view
@@ -89,9 +89,10 @@ $f3->route('GET /@animal', function($f3,$params)
 
 $f3->route('POST /results', function()
 {
-//    //Display a view
+    $_SESSION['color'] = $_POST['color'];
+    //Display a view
     $view = new Template();
-    //echo $view->render('views/home.html');
+    echo $view->render('views/results.html');
 
 });
 
