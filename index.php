@@ -90,6 +90,7 @@ $f3->route('GET /@animal', function($f3,$params)
 $f3->route('POST /results', function()
 {
     $_SESSION['color'] = $_POST['color'];
+    print_r($_SESSION);
     //Display a view
     $view = new Template();
     echo $view->render('views/results.html');
