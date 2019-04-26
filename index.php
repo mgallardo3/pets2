@@ -15,6 +15,7 @@ session_start();
 // Turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+ini_set('display_errors;', TRUE);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
