@@ -20,6 +20,8 @@ ini_set('display_errors;', TRUE);
 //Require the autoload file
 require_once('vendor/autoload.php');
 
+require_once('model/validation-functions.php');
+
 ////Include static head
 //include('views/head.html');
 
@@ -43,6 +45,21 @@ $f3->route('GET /', function()
 
 $f3->route('GET|POST /order', function()
 {
+    function($f3)
+    {
+        $_SESSION = array();
+        if (isset($_POST['animal'])) {
+            $animal = $_POST['animal'];
+            if (validStering($animal)) {
+                $_SESSION['animal'] = $animal;
+                $f3->reroute('/order2');
+            }
+            else{
+                $f3->set("errors['animal')","Please enter an animal");
+            }
+        }
+
+    }
     //Display a view
     $view = new Template();
     echo $view->render('views/form1.html');
