@@ -4,8 +4,13 @@
     {
       "name": "Maria Gallardo",
       "email":"mgallardo3@mail.greenriver.edu"
+    },
+    {
+      "name": "Sukhveer S  Jawandha",
+      "email":"sjawandha2@mail.greenriver.edu"
     }
   ],
+
   "require": {
     "bcosca/fatfree-core": "dev-master"
   }
