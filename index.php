@@ -1,11 +1,7 @@
 <?php
 /**
- *
- * Title:GRC/IT328/Dating App/index.php
- * Author: Robert Hill III
- * Date: 04.18.2019
- * Code Version: V1.0
- * Availability: http://rhill.greenriverdev.com/328/datingB/index.php
+ *index.php
+ * @author Maria Gallardo
  *
  */
 
@@ -13,7 +9,6 @@
 session_start();
 
 // Turn on error reporting
-ini_set('display_errors', 1);
 error_reporting(E_ALL);
 ini_set('display_errors;', TRUE);
 
@@ -22,8 +17,6 @@ require_once('vendor/autoload.php');
 
 require_once('model/validation-functions.php');
 
-////Include static head
-//include('views/head.html');
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -37,41 +30,48 @@ $f3->set('DEBUG', 3);
 $f3->route('GET /', function()
 {
     echo"<h1>my Pets</h1><br><p><a href='order'>Order a pet</a></p>";
-//    //Display a view
-//    $view = new Template();
-//    echo $view->render('views/home.html');
 
 });
 
-$f3->route('GET|POST /order', function()
+$f3->route('GET|POST /order', function($f3)
 {
-    function($f3)
-    {
         $_SESSION = array();
-        if (isset($_POST['animal'])) {
+        if (isset($_POST['animal']))
+        {
             $animal = $_POST['animal'];
-            if (validStering($animal)) {
+            if (validString($animal))
+            {
                 $_SESSION['animal'] = $animal;
                 $f3->reroute('/order2');
             }
-            else{
-                $f3->set("errors['animal')","Please enter an animal");
+            else
+            {
+                $f3->set("errors['animal']","Please enter an animal");
             }
         }
 
-    }
     //Display a view
     $view = new Template();
     echo $view->render('views/form1.html');
 
 });
 
-$f3->route('GET|POST /order2', function()
+$f3->route('GET|POST /order2', function($f3)
 {
-    $_SESSION['animal'] = $_POST['animal'];
-//    echo"<h1>my Pets</h1><br><p><a href='order'>Order a pet</a></p>";
-//    print_r['animal'];
-//    //Display a view
+    $color = $_POST['color'];
+    if (isset($_POST['color']))
+    {
+        if (validColor($color))
+        {
+            $_SESSION['color'] = $color;
+            $f3->reroute('/results');
+        }
+        else
+        {
+            $f3->set("errors['color']","Please enter a valid color");
+        }
+    }
+
     $view = new Template();
     echo $view->render('views/form2.html');
 
@@ -107,10 +107,8 @@ $f3->route('GET /@animal', function($f3,$params)
     }
 });
 
-$f3->route('POST /results', function()
+$f3->route('GET|POST /results', function()
 {
-    $_SESSION['color'] = $_POST['color'];
-    print_r($_SESSION);
     //Display a view
     $view = new Template();
     echo $view->render('views/results.html');
