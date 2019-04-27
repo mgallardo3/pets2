@@ -7,7 +7,7 @@ function validColor($color)
     return in_array($color,$f3->get('colors'));
 }
 
-function validStering($animal)
+function validString($animal)
 {
-    return ($animal != null && ctype_alpha($animal));
+    return ($animal!= null && ctype_alpha($animal));
 }
